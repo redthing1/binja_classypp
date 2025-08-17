@@ -10,6 +10,9 @@ from .RttiInformation.VirtualTableInference import VirtualFunctionTable
 
 
 def is_bv_valid_for_plugin(bv: bn.BinaryView) -> bool:
+    if bv.arch is None:
+        return False
+    
     if bv.arch.name == "x86_64" or bv.arch.name == "x86":
         return True
     else:
